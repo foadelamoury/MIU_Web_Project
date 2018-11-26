@@ -32,7 +32,7 @@
           $sql = "INSERT INTO `user` (`id`,`first_name`,`last_name`,`user_name` , `password`)
            VALUES ('','".$first_name."','".$last_name."','".$user_name."','".$password."')";
            if (mysqli_query($conn,$sql)) {
-            header("location:login.php");
+            header("location:login1.php");
            }
            else {
              echo $sql;
