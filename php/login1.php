@@ -30,11 +30,12 @@
         {
           $sql = "SELECT FROM `user` (`id`,`first_name`,`last_name`,`user_name` , `password`)
            VALUES ('','','','".$user_name."','".$password."')";
-           if (mysqli_query($conn,$sql)) {
+           if (mysqli_query($conn,$sql))
+           {
             header("location:login1.php");
            }
            else {
-             echo "foad";
+             echo $sql;
            }
         }
         else {
