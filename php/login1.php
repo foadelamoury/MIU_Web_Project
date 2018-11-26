@@ -21,19 +21,20 @@
   <body>
     <?php
         require_once("connection1.php");
+
     if (isset($_POST['login'])) {
 
-        $user_name=$_POST['user_name'];
-        $password=$_POST['password'];
+      $user_name=$_POST['user_name'];
+      $password=$_POST['password'];
         if( $user_name !="" and $password !="" )
         {
           $sql = "SELECT FROM `user` (`id`,`first_name`,`last_name`,`user_name` , `password`)
-           VALUES ('','".$first_name."','".$last_name."','".$user_name."','".$password."')";
+           VALUES ('','','','".$user_name."','".$password."')";
            if (mysqli_query($conn,$sql)) {
-            header("location:login.php");
+            header("location:login1.php");
            }
            else {
-             echo $sql;
+             echo "foad";
            }
         }
         else {
