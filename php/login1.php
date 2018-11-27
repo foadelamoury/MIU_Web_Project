@@ -31,8 +31,9 @@
           $q = 'SELECT * FROM `user` where `user_name`="'.$user_name.'"
           and `password` ="'.$password.'"';
           $r = mysqli_query($conn,$q);
-           if (mysqli_num_rows($r)>0) {
-echo "you are now logged in";
+           if (mysqli_num_rows($r)>0) { //the rows in the database
+
+             header("location:index1.php");
           }
            else {
              echo 'your password and user name do not match';
