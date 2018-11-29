@@ -28,15 +28,14 @@
       $password=$_POST['password'];
         if( $user_name !="" and $password !="" )
         {
-          $q = 'SELECT * FROM `user` where `user_name`="'.$user_name.'"
-          and `password` ="'.$password.'"';
-          $r = mysqli_query($conn,$q);
-           if (mysqli_num_rows($r)>0) { //the rows in the database
-
-             header("location:index1.php");
-          }
+          $sql = "SELECT FROM `user` (`id`,`first_name`,`last_name`,`user_name` , `password`)
+           VALUES ('','','','".$user_name."','".$password."')";
+           if (mysqli_query($conn,$sql))
+           {
+            header("location:login1.php");
+           }
            else {
-             echo 'your password and user name do not match';
+             echo $sql;
            }
         }
         else {
