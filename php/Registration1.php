@@ -25,52 +25,27 @@
     if (isset($_POST['register'])) //if en hwa das 3ala register button w form mlyann !!
     {
       //attribute in database == what posted from From
-        $first_name=$_POST['first_name'];
-        $last_name=$_POST['last_name'];
-        $Family_Name=$_POST['Family_Name'];
-        $Gender=$_POST['Gender'];
-        $Mobile_Number=$_POST['Mobile_Number'];
-        $Home_Telephone=$_POST['Home_Telephone'];
-        $Email=$_POST['Email'];
-        $National_ID=$_POST['National_ID'];
-        $University_Degree=$_POST['University_Degree'];
-        $Date_Of_Birth=$_POST['Date_Of_Birth'];
-        $Address=$_POST['Address'];
-        $Building_Number=$_POST['Building_Number'];
-        $Flat_Number=$_POST['Flat_Number'];
-        $Department_Number=$_POST['Department_Number'];
-        $user_name=$_POST['user_name'];
+        $email=$_POST['email'];
         $password=$_POST['password'];
+        $firstName=$_POST['firstName'];
+        $lastName=$_POST['lastName'];
+        $familyName=$_POST['familyName'];
+        $gender=$_POST['gender'];
+        $nationality=$_POST['nationality'];
+        $dateOfBirth=$_POST['dateOfBirth'];
+        $ssn=$_POST['ssn'];
+        $type=$_POST['type'];
 
-        if($first_name !="" and $last_name !="" and $user_name !="" and $password !="" and $Family_Name !="" and $Gender !=""
-        and $Mobile_Number !=""and $Home_Telephone !=""and $Email !=""
-        and $National_ID !=""and $University_Degree !=""and $Date_Of_Birth !=""
-        and $Address !=""and $Building_Number !=""and $Flat_Number !="" and $Department_Number !="" )
+
+
+
+        if($email !="" and $password !="" and $firstName !="" and $lastName !="" and $familyName !="" and $gender !=""
+        and $nationality !=""and $dateOfBirth !=""and $ssn !=""
+        and $type !="" )
         {
 
-          $sql = "INSERT INTO `user` (`id`,
-            `first_name`,
-            `last_name`,
-             `Family_Name` ,
-             `Gender`,
-               `Mobile_Number` , `Home_Telephone` , `Email` ,
-           `National_ID` ,`University_Degree` ,`Date_Of_Birth` ,`Address` ,`Building_Number` ,
-           `Flat_Number` ,`Department_Number` ,`user_name` , `password`)
-           VALUES (NULL,'".$first_name."',
-             '".$last_name."',
-             '".$Family_Name."',
-                '".$Gender."',
-             '".$Mobile_Number."',
-             '".$Home_Telephone."',
-           '".$Email."',
-           '".$National_ID."',
-           '".$University_Degree."',
-           '".$Date_Of_Birth."',
-           '".$Address."',
-           '".$Building_Number."'
-           ,'".$Flat_Number."',
-           '".$Department_Number."',
-           '".$user_name."','".$password."')";
+          $sql = "INSERT INTO `user` (`id`, `email`,`password`,`firstName` ,`lastName`,`familyName` , `gender` , `nationality` ,`dateOfBirth` ,`ssn` ,`type`)
+           VALUES (NULL,'".$email."','".$password."','".$firstName."','".$lastName."','".$familyName."','".$gender."','".$nationality."','".$dateOfBirth."','".$ssn."','".$type."')";
            if (mysqli_query($conn,$sql)) {
             header("location:login1.php");
            }
@@ -94,31 +69,34 @@
   <legend> Please Fill In The Form</legend><br>
       <fieldset>
       <legend> Personal Information : </legend>
-    First Name: <br>
-        <input type="text" name="first_name" placeholder="First name..." required/> <br>
+    Email: <br>
+        <input type="text" name="email" placeholder="Email" required/> <br>
+        Password: <br>
+            <input type="password" name="password" placeholder="Password" required/> <br>
+
+        First Name: <br>
+            <input type="text" name="firstName" placeholder="First name..." required/> <br>
+
     Last Name: <br>
-        <input type="text" name="last_name" placeholder="Last name..." required/><br>
+        <input type="text" name="lastName" placeholder="Last name..." required/><br>
     Family Name : <br>
-        <input type="text" Name="Family_Name" placeholder="Last name..." required/> <br>
+        <input type="text" Name="familyName" placeholder="familyName" required/> <br>
     Gender : <br>
-        <input type="radio" Name="Gender" value="Male" required/>Male <br>
-        <input type="radio" Name="Gender" value="Female" required/> Female <br>
-    Mobile Number : <br>
-        <input type="Number" Name="Mobile_Number" placeholder="Mobile Number..."required/><br>
-    Home Telephone : <br>
-        <input type="Number" Name="Home_Telephone" placeholder="Home Number..."required/><br>
-    Email : <br>
-        <input type="text" Name="Email" placeholder="example@live.com..." required/><br>
-    National Number : <br>
-        <input type="Number" Name="National_ID" placeholder="National ID..."required/><br>
-    University Degree :<br>
-        <input type="text" Name="University_Degree" placeholder="University Degree..."required/><br>
-    Date Of Birth:<br>
-        <input type="number" Name="Date_Of_Birth" placeholder="Date Of Birth..." required/><br>
+        <input type="radio" Name="gender" value="Male" required/>Male <br>
+        <input type="radio" Name="gender" value="Female" required/> Female <br>
+    Nationality : <br>
+        <input type="text" Name="nationality" placeholder="Nationality"required/><br>
+    dateOfBirth : <br>
+        <input type="date" Name="dateOfBirth" placeholder="dateOfBirth"required/><br>
+    Ssn : <br>
+        <input type="text" Name="ssn" placeholder="Ssn" required/><br>
+    type : <br>
+        <input type="text" Name="type" placeholder="type"required/><br>
+
         </fieldset>
 
 
-<fieldset>
+<!--<fieldset>
 <legend>Address Information: </legend>
 Full Addres :<br>
       <input type="text" Name="Address"required/><br>
@@ -136,10 +114,9 @@ User Name: <br>
 Password: <br>
       <input type="password" name="password" placeholder="password" required/><br>
       </fieldset>
-
+-->
 <input type="submit" name="register" value="Register"required/><br><br>
-
-</fieldset>
+<!--</fieldset>-->
 </form>
 </div>
   </body>

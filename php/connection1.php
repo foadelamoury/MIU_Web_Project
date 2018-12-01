@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password,"chattingsystem");
+$conn = new mysqli($servername, $username, $password,"nursery_website");
 
 // Check connection
 if ($conn->connect_error) {

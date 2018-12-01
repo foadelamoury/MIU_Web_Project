@@ -20,19 +20,31 @@
   </head>
   <body>
     <?php
+    session_start();
         require_once("connection1.php");
 
-    if (isset($_POST['login'])) {
+    if (Isset($_POST['login'])) {
 
-      $user_name=$_POST['user_name'];
+      $email=$_POST['email'];
       $password=$_POST['password'];
-        if( $user_name !="" and $password !="" )
+        if( $email !="" and $password !="" )
         {
-          $sql = "SELECT FROM `user` (`id`,`first_name`,`last_name`,`user_name` , `password`)
-           VALUES ('','','','".$user_name."','".$password."')";
+          $sql = "SELECT * FROM `user` where `email` ='".$email."' and `password`= '".$password."'";
+           $result = mysqli_query($conn,$sql);
+          if (mysqli_num_rows($result)==0)
+           {
+             $_SESSION['email']= $email;
+             /*echo "you are now logged in ";*/
+          }
+          else {
+            echo 'your password and user name do not match';
+          }
            if (mysqli_query($conn,$sql))
            {
-            header("location:login1.php");
+
+            header("location:index1.php");
+
+
            }
            else {
              echo $sql;
@@ -52,7 +64,7 @@
     <br>
 
   User Name: <br>
-  <input type="text" name="user_name" placeholder="user name" required/><br><br>
+  <input type="text" name="email" placeholder="Email" required/><br><br>
   Password: <br>
   <input type="password" name="password" placeholder="password"/><br><br>
   <input type="submit" name="login" value="Login"/><br><br>
