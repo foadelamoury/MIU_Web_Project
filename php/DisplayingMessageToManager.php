@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<style media="screen">
+<link rel='stylesheet' href='../css/style1.css'>
+<style media="screen"  >
   *{margin: 0px; padding:0px;}
-  #main{border: 1px solid black; width: 450px; height: 570px; margin: 40px auto}
-  #message_area{width:98%; padding: 0% 1%; border: 1px solid black; height:10%; }
-  #result-message-area{width: 98%; padding: 0% 1%;border: 1px solid blue; height: 90%;}
+  #main{ width: 100%; height: 570px; margin: 40px auto}
+    #result-message-area{width: 100%; padding: 0% 1%; height: 90%;}
+  #message_area{width:98%;  height:10%; }
+
 
 </style>
   <body>
@@ -16,9 +18,11 @@
 
 if (isset($_SESSION['email']))
 {
-
+  echo "<div class='comment-box'><p>";
   echo 'Welcome '.$_SESSION['email'].'<br>';
-  echo '<a href="logout1.php">Log out</a>';
+  echo '<a href="logout1.php">Log out</a>
+     <button onclick="ReloadingPage()">Reload page</button>';
+     echo "</p></div>";
   echo '<div id="main">
   <div id="result-message-area">
   ';
@@ -28,9 +32,11 @@ if (isset($_SESSION['email']))
       while ($row= mysqli_fetch_assoc($result1)) {
           $message=$row['message'];
           $email= $row['email'];
+          echo "<div class='comment-box'><p>";
+
           echo '<h4 style="color:blue">'.$email.'</h4>';
           echo '<p>'.$message.'</p>';
-          echo '<hr>';
+echo "</p></div>";
 
       }
       if (Isset($_POST['submit'])) {
@@ -42,23 +48,24 @@ if (isset($_SESSION['email']))
         ';
         if(mysqli_query($conn,$sql))
         {
+          echo "<div class='comment-box'><p>";
           echo '<h4 style="color:blue">'.$_SESSION['email'].'</h4>';
           echo '<p>'.$message.'</p></div>';
-
+          echo "</p></div>";
         }
   }
   echo '
   <div id="message_area">
   <form  method="post">
-
+  </div>
     <br>
 
 
-  <input type="text" name="message" style="width:370px; height:50px;" placeholder="Type your message" required/>
-  <input type="submit" name="submit" style="width:70px; height:50px;" value="message"/>
+  <input type="text" name="message" style="width:80%; height:10%;" placeholder="Type your message" required/>
+  <button type="submit" name="submit" onclick="ReloadingPage()"  style="width:10%; height:10%;" >Send</button>
 
   </form>
-  </div>
+</div>
   </div>';
 
 }
@@ -68,4 +75,8 @@ else
 }
 ?>
 </body>
+
+<script src="../js/Reload.js">
+
+</script>
 </html>

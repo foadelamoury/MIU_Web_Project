@@ -17,26 +17,24 @@
   <body>
 
      <?php
+     echo "<br>";
+    echo "<form method='post' action='".setComments($conn)."'>
+    <input type='hidden' name='userId'>
 
+    <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
+    <textarea name='message'></textarea><br>
+    <button  type='submit' name='commentSubmit'>Comment</button>
+    <button onclick='ReloadingPage()'>Reload page</button>
+    </form>";
      getComments($conn);
 
-     echo "<br>";
-echo "<form method='post' action='".setComments($conn)."'>
-<input type='hidden' name='uid' value='Manager'>
 
-<input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
-<textarea name='message'></textarea><br>
-<button  type='submit' name='commentSubmit'>Comment</button>
-<button onclick='ReloadingPage()'>Reload page</button>
-</form>";
 
 
 ?>
 
   </body>
-  <script>
-function ReloadingPage() {
-    location.reload();
-}
-</script>
+  <script src="../js/Reload.js">
+
+  </script>
 </html>

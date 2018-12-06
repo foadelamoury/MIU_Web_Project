@@ -27,14 +27,17 @@
 
       $email=$_POST['email'];
       $password=$_POST['password'];
+
         if( $email !="" and $password !="" )
         {
           $sql = "SELECT * FROM `user` where `email` ='".$email."' and `password`= '".$password."'";
            $result = mysqli_query($conn,$sql);
-          if (mysqli_num_rows($result)==0)
+
+          if (mysqli_num_rows($result)>=0)
            {
              $_SESSION['email']= $email;
              /*echo "you are now logged in ";*/
+
           }
           else {
             echo 'your password and user name do not match';
@@ -42,7 +45,7 @@
            if (mysqli_query($conn,$sql))
            {
 
-            header("location:index1.php");
+            header("location:DisplayingMessageToManager.php");
 
 
            }
@@ -68,7 +71,7 @@
   Password: <br>
   <input type="password" name="password" placeholder="password"/><br><br>
   <input type="submit" name="login" value="Login"/><br><br>
-
+  <a href="Registration1.php">Create an account</a>
   </fieldset>
   </form>
     </div>
